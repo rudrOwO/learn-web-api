@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\learn-web-api.props" />
-</Project>
