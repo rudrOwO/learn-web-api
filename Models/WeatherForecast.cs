@@ -1,4 +1,4 @@
-namespace learn_web_api;
+namespace learn_web_api.Models;
 
 public class WeatherForecast
 {

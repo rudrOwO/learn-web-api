@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
+using learn_web_api.Models;
 
 namespace learn_web_api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("banana")]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
