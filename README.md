@@ -22,7 +22,6 @@
 ```json
     {
         id: guid // Primary Key
-        email: string // Foreign Key
         content: string
         createdAt: Date
         updatedAt: Date

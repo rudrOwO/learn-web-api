@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace learn_web_api.Controllers;
 
 [ApiController]
-[Route("test")]
+[Route("[controller]")]
 public class TestController : ControllerBase
 {
-     
     [HttpGet]
     public IActionResult Get()
     {
-        return Ok("TESTING");
+        var add = (int a, int b) => a + b;
+        return Ok(add.GetType().ToString());
     }
 }

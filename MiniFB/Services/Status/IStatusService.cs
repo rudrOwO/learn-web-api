@@ -1,0 +1,1 @@
+namespace MiniFB.Services.Status;
