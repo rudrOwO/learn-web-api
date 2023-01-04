@@ -1,3 +1,8 @@
+// DONE Populate Context
+// TODO Write Services (Repository)
+// TODO Inject Services (Dependency Injection)
+
+
 // Add services to the builder.
 var builder = WebApplication.CreateBuilder(args);
 {   
