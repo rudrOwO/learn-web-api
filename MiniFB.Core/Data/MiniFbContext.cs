@@ -24,5 +24,5 @@ public partial class MiniFbContext : DbContext
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-    public DbSet<Status>? Status { get; set; }
+    public DbSet<Status>? Statuses { get; set; }
 }

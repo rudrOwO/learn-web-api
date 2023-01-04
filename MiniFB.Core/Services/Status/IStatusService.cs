@@ -1,7 +1,8 @@
 using MiniFB.Core.Models;
-namespace MiniFB.Services.Status;
+namespace MiniFB.Core.Services;
 
 public interface IStatusService 
 {
-//    public IEnumerable<> GetAllStatuses;
+   public IEnumerable<Status>? GetAllStatus();
+   public void CreateStatus(Status status);
 }
