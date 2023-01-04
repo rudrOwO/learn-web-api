@@ -1,10 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MiniFB.Models;
+using MiniFB.Core.Models;
 
 namespace MiniFB.Core.Db;
 
 public partial class MiniFbContext : DbContext
 {
+    public MiniFbContext ()
+    {
+    }
+
     public MiniFbContext(DbContextOptions<MiniFbContext> options)
         : base(options)
     {
@@ -20,5 +24,5 @@ public partial class MiniFbContext : DbContext
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-    public DbSet<IEnumerable<Status>>? AllStatus;
+    public DbSet<Status>? Status { get; set; }
 }

@@ -1,8 +1,8 @@
-namespace MiniFB.Models;
+namespace MiniFB.Core.Models;
 
 public class Status
 {
-    public Guid Id { get; }
+    public Guid Id { get; set; }
     public string Content { get; set; } = null!;
     public DateTime CreatedAt { get; } = default;
     public DateTime UpdatedAt { get; set; } = default;
