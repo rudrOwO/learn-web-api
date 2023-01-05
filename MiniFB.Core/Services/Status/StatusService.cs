@@ -20,22 +20,29 @@ public class StatusService : IStatusService
         _dbContext.Add<Status>(status);
         _dbContext.SaveChanges();
     }
+
+    public void UpdateStatus(Status status)
+    {
+        var targetStatus = _dbContext.Find<Status>(status.Id);
+
+        if (targetStatus is null)
+        {
+            throw new Exception("Invlid ID");
+        }
+        else
+        {
+            targetStatus.Content = status.Content;
+            _dbContext.SaveChanges();
+        }
+    }
+
+    public void GetStatus(Guid Id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void DeleteStatus(Guid Id)
+    {
+        throw new NotImplementedException();
+    }
 }
-
-
-
-// // THROW EXCEPTION
-// private string _content = default!;
-// private string _createdAt = default!;
-
-// public string Content 
-// {
-//     get => _content; 
-//     init
-//     {
-//         if (value is null) {
-//             throw new Exception("Post content can not be null");
-//         }
-//         _content = value;
-//     }
-// }      
