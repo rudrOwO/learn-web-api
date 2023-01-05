@@ -21,3 +21,21 @@ public class StatusService : IStatusService
         _dbContext.SaveChanges();
     }
 }
+
+
+
+// // THROW EXCEPTION
+// private string _content = default!;
+// private string _createdAt = default!;
+
+// public string Content 
+// {
+//     get => _content; 
+//     init
+//     {
+//         if (value is null) {
+//             throw new Exception("Post content can not be null");
+//         }
+//         _content = value;
+//     }
+// }      
