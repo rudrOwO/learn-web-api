@@ -23,13 +23,20 @@ public class StatusController : ControllerBase
     }
     
     [HttpPost]
-    public IActionResult CreateStatus(CreateStatusRequest status)
+    public IActionResult CreateStatus(CreateStatusRequest request)
     {
         try
         {
-            var newStatus = new Status(status.Content);
+            var newStatus = new Status(request.Content);
             _statusService.CreateStatus(newStatus);
-            return Ok();
+
+            return Ok(
+                new StatusResponse (
+                   Id: newStatus.Id,
+                   Content: newStatus.Content,
+                   CreatedAt: newStatus.CreatedAt
+                )
+            );
         }
         catch (System.Exception e)
         {
@@ -39,12 +46,18 @@ public class StatusController : ControllerBase
 
     [HttpGet]
     [Route("{id:guid}")]
-    public IActionResult GetStatus()
+    public IActionResult GetStatus(Guid id)
     {
         try
         {
-        
-            return Ok();
+            var retreivedStatus =_statusService.GetStatus(id);
+            return Ok(
+                new StatusResponse (
+                   Id: retreivedStatus.Id,
+                   Content: retreivedStatus.Content,
+                   CreatedAt: retreivedStatus.CreatedAt
+                )
+            );
         }
         catch (System.Exception e)
         {
@@ -54,11 +67,10 @@ public class StatusController : ControllerBase
 
     [HttpPut]
     [Route("{id:guid}")]
-    public IActionResult UpdateStatus()
+    public IActionResult UpdateStatus(Guid id, UpdateStatusRequest request)
     {
         try
         {
-        
             return Ok();
         }
         catch (System.Exception e)
