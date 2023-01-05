@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MiniFB.Core.Services;
+using MiniFB.Contracts.Status;
 using MiniFB.Core.Models;
 
 namespace learn_web_api.Controllers;
@@ -19,6 +20,21 @@ public class StatusController : ControllerBase
     public IActionResult GetAllStatus()
     {
         return Ok(_statusService.GetAllStatus());
+    }
+    
+    [HttpPost]
+    public IActionResult CreateStatus(CreateStatusRequest status)
+    {
+        try
+        {
+            var newStatus = new Status(status.Content);
+            _statusService.CreateStatus(newStatus);
+            return Ok();
+        }
+        catch (System.Exception)
+        {
+            return Problem();
+        }
     }
 
     [HttpGet]
