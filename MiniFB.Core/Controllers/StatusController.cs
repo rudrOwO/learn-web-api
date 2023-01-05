@@ -31,9 +31,9 @@ public class StatusController : ControllerBase
             _statusService.CreateStatus(newStatus);
             return Ok();
         }
-        catch (System.Exception)
+        catch (System.Exception e)
         {
-            return Problem();
+            return Problem(e.Message);
         }
     }
 
@@ -41,6 +41,45 @@ public class StatusController : ControllerBase
     [Route("{id:guid}")]
     public IActionResult GetStatus()
     {
-        return Ok("One");
+        try
+        {
+        
+            return Ok();
+        }
+        catch (System.Exception e)
+        {
+            return Problem(e.Message);
+        }
     }
+
+    [HttpPut]
+    [Route("{id:guid}")]
+    public IActionResult UpdateStatus()
+    {
+        try
+        {
+        
+            return Ok();
+        }
+        catch (System.Exception e)
+        {
+            return Problem(e.Message);
+        }
+    }
+
+    [HttpDelete]
+    [Route("{id:guid}")]
+    public IActionResult DeleteStatus()
+    {
+        try
+        {
+        
+            return Ok();
+        }
+        catch (System.Exception e)
+        {
+            return Problem(e.Message);
+        }
+    }
+    
 }

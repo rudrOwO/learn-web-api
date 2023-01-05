@@ -24,10 +24,10 @@ public class StatusService : IStatusService
     public void UpdateStatus(Status status)
     {
         var targetStatus = _dbContext.Find<Status>(status.Id);
-
+    
         if (targetStatus is null)
         {
-            throw new Exception("Invlid ID");
+            throw new Exception("Invalid ID");
         }
         else
         {
@@ -36,13 +36,32 @@ public class StatusService : IStatusService
         }
     }
 
-    public void GetStatus(Guid Id)
+    public Status GetStatus(Guid Id)
     {
-        throw new NotImplementedException();
+        var targetStatus = _dbContext.Find<Status>(Id);
+    
+        if (targetStatus is null)
+        {
+            throw new Exception("Invalid ID");
+        }
+        else
+        {
+            return targetStatus;
+        }
     }
 
     public void DeleteStatus(Guid Id)
     {
-        throw new NotImplementedException();
+        var targetStatus = _dbContext.Find<Status>(Id);
+    
+        if (targetStatus is null)
+        {
+            throw new Exception("Invalid ID");
+        }
+        else
+        {
+            _dbContext.Remove(targetStatus);
+            _dbContext.SaveChanges();
+        }
     }
 }
