@@ -21,7 +21,7 @@ public class StatusController : ControllerBase
     {
         return Ok(_statusService.GetAllStatus());
     }
-    
+
     [HttpPost]
     public IActionResult CreateStatus(CreateStatusRequest request)
     {
@@ -31,7 +31,7 @@ public class StatusController : ControllerBase
             _statusService.CreateStatus(newStatus);
 
             return Ok(
-                new StatusResponse (
+                new StatusResponse(
                    Id: newStatus.Id,
                    Content: newStatus.Content,
                    CreatedAt: newStatus.CreatedAt
@@ -50,9 +50,9 @@ public class StatusController : ControllerBase
     {
         try
         {
-            var retreivedStatus =_statusService.GetStatus(id);
+            var retreivedStatus = _statusService.GetStatus(id);
             return Ok(
-                new StatusResponse (
+                new StatusResponse(
                    Id: retreivedStatus.Id,
                    Content: retreivedStatus.Content,
                    CreatedAt: retreivedStatus.CreatedAt
@@ -71,7 +71,16 @@ public class StatusController : ControllerBase
     {
         try
         {
-            return Ok();
+            var newStatus = new Status(request.Content);
+            _statusService.CreateStatus(newStatus);
+
+            return Ok(
+                new StatusResponse(
+                   Id: newStatus.Id,
+                   Content: newStatus.Content,
+                   CreatedAt: newStatus.CreatedAt
+                )
+            );
         }
         catch (System.Exception e)
         {
@@ -81,11 +90,11 @@ public class StatusController : ControllerBase
 
     [HttpDelete]
     [Route("{id:guid}")]
-    public IActionResult DeleteStatus()
+    public IActionResult DeleteStatus(Guid id)
     {
         try
         {
-        
+            _statusService.DeleteStatus(id);
             return Ok();
         }
         catch (System.Exception e)
@@ -93,5 +102,5 @@ public class StatusController : ControllerBase
             return Problem(e.Message);
         }
     }
-    
+
 }

@@ -5,7 +5,7 @@ namespace MiniFB.Core.Db;
 
 public partial class MiniFbContext : DbContext
 {
-    public MiniFbContext ()
+    public MiniFbContext()
     {
     }
 
