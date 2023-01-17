@@ -1,17 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MiniFB.Core.Models;
+using MiniFB.Core.Options;
 
 namespace MiniFB.Core.Db;
 
 public partial class MiniFbContext : DbContext
 {
+    private readonly DatabaseOptions _databaseOptions;
+
     public MiniFbContext()
     {
+        this._databaseOptions = new DatabaseOptions();
     }
 
     public MiniFbContext(DbContextOptions<MiniFbContext> options)
         : base(options)
     {
+        this._databaseOptions = new DatabaseOptions();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
